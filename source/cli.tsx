@@ -11,10 +11,14 @@ const cli = meow(
 
 	Options
 		--name  Your name
+		--age 	Your age
 
 	Examples
 	  $ learn-ink --name=Jane
 	  Hello, Jane
+	  
+	  $ learn-ink --age=20
+	  You are 20 years old. 
 `,
 	{
 		importMeta: import.meta,
@@ -22,8 +26,11 @@ const cli = meow(
 			name: {
 				type: 'string',
 			},
+			age: {
+				type: 'number',
+			},
 		},
 	},
 );
 
-render(<App name={cli.flags.name} />);
+render(<App {...cli.flags} />);

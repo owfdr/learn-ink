@@ -2,13 +2,23 @@ import React from 'react';
 import {Text} from 'ink';
 
 type Props = {
-	name: string | undefined;
+	name?: string;
+	age?: number;
 };
 
-export default function App({name = 'Stranger'}: Props) {
+export default function App({name, age}: Props) {
 	return (
-		<Text>
-			Hello, <Text color="green">{name}</Text>
-		</Text>
+		<>
+			{name && (
+				<Text>
+					Hello, <Text color="green">{name}!</Text>
+				</Text>
+			)}
+			{age && (
+				<Text>
+					You are <Text color="green">{age}</Text> years old.
+				</Text>
+			)}
+		</>
 	);
 }
